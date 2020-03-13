@@ -29,5 +29,8 @@ unless node['nodejs']['packages']
 end
 
 node['nodejs']['packages'].each do |node_pkg|
-  package node_pkg
+  package node_pkg do
+    retries 6
+    retry_delay 10
+  end
 end
